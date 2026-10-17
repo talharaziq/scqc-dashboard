@@ -1,0 +1,54 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Packaging and build output (pip install -e creates src/*.egg-info/)
+*.egg-info/
+build/
+dist/
+
+# Test, lint and coverage caches
+.pytest_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# Secrets and local configuration.
+# .streamlit/config.toml is committed on purpose; only secrets are ignored.
+.env
+.env.*
+.streamlit/secrets.toml
+
+# Single-cell data: never commit real or private datasets.
+# Tests and the demo use small synthetic data generated in code.
+*.h5ad
+*.h5
+*.hdf5
+*.loom
+*.mtx
+*.mtx.gz
+barcodes.tsv
+barcodes.tsv.gz
+features.tsv
+features.tsv.gz
+genes.tsv
+genes.tsv.gz
+
+# Local data folders and generated output (exports, reports, manifests)
+data/
+uploads/
+outputs/
+exports/
+reports/
+
+# Editors and operating systems
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
