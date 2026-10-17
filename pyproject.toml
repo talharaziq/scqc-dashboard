@@ -1,0 +1,52 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "scqc-dashboard"
+# Single source of truth for the version. The package reads it back through
+# importlib.metadata, so it is not repeated in __init__.py.
+version = "0.1.0.dev0"
+description = "Local, reproducible quality-control dashboard for single-cell RNA-seq data."
+# anndata and scanpy both require Python 3.12 or newer.
+requires-python = ">=3.12"
+# Lower bounds only, and only where a version was checked or a feature is needed.
+# numpy, scipy, pandas, h5py and plotly are imported directly, so they are declared,
+# but their versions are left to the resolver. Exact versions get frozen into a
+# constraints file after the first passing test run.
+dependencies = [
+    "anndata>=0.12",
+    "scanpy>=1.12",
+    "streamlit>=1.50",
+    "numpy",
+    "scipy",
+    "pandas",
+    "h5py",
+    "plotly",
+]
+# No readme, license or authors yet: README.md does not exist, and the license
+# and author details are yours to choose. They get added when they are real.
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "ruff",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["scqc_dashboard"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
